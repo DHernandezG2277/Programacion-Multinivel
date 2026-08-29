@@ -4,3 +4,11 @@ class Personaje:
         self.raza = raza
         self.clase = clase
         self.nivel = nivel
+
+    def Dictar(self):
+        return {
+            "nombre": self.nombre,
+            "raza": self.raza,
+            "clase": self.clase,
+            "nivel": self.nivel
+        }
