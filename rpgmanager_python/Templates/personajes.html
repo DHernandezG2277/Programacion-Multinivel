@@ -1,0 +1,34 @@
+<h1>Lista de Personajes</h1>
+<table border="1">
+    <tr>
+        <th>Nombre</th>
+        <th>Raza</th>
+        <th>Clase</th>
+        <th>Nivel</th>
+    </tr>
+    {% for p in personajes %}
+    <tr>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.raza }}</td>
+        <td>{{ p.clase }}</td>
+        <td>{{ p.nivel }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form action="/personajes" method="POST">
+    <label>Nombre:</label>
+    <input type="text" name="nombre">
+    
+    <label>Raza:</label>
+    <input type="text" name="raza">
+    
+    <label>Clase:</label>
+    <input type="text" name="clase">
+    
+    <label>Nivel:</label>
+    <input type="number" name="nivel">
+    
+    <button type="submit">Guardar Personaje</button>
+</form>
+
