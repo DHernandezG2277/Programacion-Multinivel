@@ -9,8 +9,9 @@
 
 .producto
 {
+	font-family: 'montserrat';
 	text-decoration: none;
-	color: inherit;
+	color: #ffffff;
 	border: 1px solid #ddd;
 	border-radius: 8px;
 	padding:15px;
@@ -21,7 +22,7 @@
 .producto:hover
 {
 	transform:scale(1.03);
-	box-shadow:0 4px 12px rgba(0,0,0,0.15);
+	box-shadow:0 4px 12px #ffffff;
 }
 
 .producto img
@@ -34,13 +35,35 @@
 
 h1
 {
-	font-family: '';
+	font-family: 'montserrat';
 	font-size: 3rem;
 	color: #ffa418;
 	text-align: center;
 }
 
+p
+{
+	color: #ffffff;
+	font-size:1.5rem;
+}
+
+nav
+{
+	position: fixed;
+	width: 99%;
+	top: 0;
+	background-color: #594E3B;
+	z-index: 1000;
+	padding: 2px 0;
+	border-radius: 12px;
+}
+
+main
+{
+	margin-top:120px;
+}
+
 body
 {
-	background:#8c8984;
+	background:#000000;
 }
