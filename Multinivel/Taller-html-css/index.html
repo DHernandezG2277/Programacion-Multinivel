@@ -8,20 +8,20 @@
 <body>
 	<nav>
 		<ul>
-			<li><a href="#inicio">Inicio</a></li>
-			<li><a href="#productos">Productos</a></li>
-			<li><a href="#nosotros">Nosotros</a></li>
-			<li><a href="#contacto">Contactanos</a></li>
+			<a href="#inicio">Inicio</a>
+			<a href="#productos">Productos</a>
+			<a href="#nosotros">Nosotros</a>
+			<a href="#contacto">Contactanos</a>
 		</ul>
 	</nav>
 	
 	<main>
 		<section id="inicio">
-			<h1>Bienvenido a Gimnasio Estrella</h1>
-			<p>
-				A continuación encontraras acerca de algunos de nuestros productos, guias y planes.<br>
-				Si quieres saber mas acerca de nosotros visita la sección "nosotros".
-			</p>
+				<h1>Bienvenido a Gimnasio Estrella</h1>
+				<p>
+					A continuación encontraras acerca de algunos de nuestros productos, guias y planes.<br>
+					Si quieres saber mas acerca de nosotros visita la sección "nosotros".
+				</p>
 		</section>
 		
 		<section id="productos">
@@ -30,24 +30,62 @@
 			<h2>Productos</h2>
 			<div class="grid-productos">
 				<a href="Creatina-1" class="producto">
-					<img src="img/Creatina-1.jpg" alt="Creatina 1">
+					<img src="img/Creatina2.png" alt="Creatina 1">
 					<h3>Creatina de ???gr</h3>
 					<p>$???</p>
 				</a>
 				<a href="creatina-2" class="producto">
-					<img src="img/Creatina-2" alt= "Creatina 2">
+					<img src="img/Creatina3.png" alt= "Creatina 2">
+					<h3>Creatina de ???gr</h3>
+					<p>$???</p>
+				<a href="Creatina-3" class="producto">
+					<img src="img/Creatina4.png" alt="Creatina 1">
+					<h3>Creatina de ???gr</h3>
+					<p>$???</p>
+				</a>
+				<a href="creatina-4" class="producto">
+					<img src="img/Creatina5.png" alt= "Creatina 2">
+					<h3>Creatina de ???gr</h3>
+					<p>$???</p>
+				<a href="Creatina-5" class="producto">
+					<img src="img/Creatina6.png" alt="Creatina 1">
+					<h3>Creatina de ???gr</h3>
+					<p>$???</p>
+				</a>
+				<a href="creatina-6" class="producto">
+					<img src="img/Creatina7.png" alt= "Creatina 2">
 					<h3>Creatina de ???gr</h3>
 					<p>$???</p>
 					
 				</a>
 			</div>
+			
 		</section>
 		
 		<section id="contacto">
 			<h1>Contactanos</h1>
-			<p>
+			<form>
+				<label for="nombre">Nombre:</label>
+				<input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
 				
-			</p>
+				<label for="correo">Correo:</label>
+				<input type="email" id="correo" name="correo" placeholder="ejemplo@ejemploooo.com" required>
+				
+				<label for="telefono">Telefono:</label>
+				<input type="tel" id="telefono" name="telefono" placeholder="300 000 0000">
+				
+				<label for="asunto">Asunto</label>
+				<input type="text" id="asunto" name="asunto" placeholder="Tu asunto..." required>
+				
+				<label for="mensaje">Mensaje</label>
+				<textarea id="mensaje" name="mensaje" rows=4 placeholder="Escribe tu mensaje..." required></textarea>
+				
+				<checkbox>
+					
+				<button type="submit">Enviar</button>
+				
+				
+			</form>
 		</section>
 	</main>
 	<footer>

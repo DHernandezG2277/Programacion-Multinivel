@@ -22,9 +22,9 @@ body
 	background-color: var(--fondo);
 }
 
-#inicio
+.inicio
 {
-	background-image: url('img/fondoInicio.jpeg');
+	background: url('img/fondoInicio.jpeg');
 	background-size:cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -107,7 +107,11 @@ p
 
 nav
 {
+	display: flex;
+	justify-content:center;
 	position: fixed;
+	gap: 200px;
+	align-items:center;
 	width: 99%;
 	top: 0;
 	background-color: var(--barra-nav);
