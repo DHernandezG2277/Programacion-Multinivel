@@ -1,17 +1,69 @@
+:root
+{
+	--fondo: #ffffff; 
+	--barra-nav: #F2C26F; 
+	--texto1-color: #000000; 
+	--texto2-color: #ffa418; 
+}
+
+@media(prefers-color-scheme: dark)
+{
+	:root
+	{
+		--fondo: #000000; 
+		--barra-nav: #594e3b;
+		--texto1-color: #ffffff; 
+		--texto2-color: #ffa418; 
+	}
+}
+
+body
+{
+	background-color: var(--fondo);
+}
+
+#inicio
+{
+	background-image: url('img/fondoInicio.jpeg');
+	background-size:cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+main
+{
+	margin-top:120px;
+}
 
 .grid-productos
 {
 	display: grid;
-	grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+	grid-template-columns:1fr;
 	gap:20px;
 	padding:20px;
+}
+
+@media (min-width:768px) 
+{
+	.grid-productos
+	{
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media(min-width:1024px)
+{
+	.grid-productos
+	{
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 .producto
 {
 	font-family: 'montserrat';
 	text-decoration: none;
-	color: #ffffff;
+	color: var(--texto2-color);
 	border: 1px solid #ddd;
 	border-radius: 8px;
 	padding:15px;
@@ -22,7 +74,7 @@
 .producto:hover
 {
 	transform:scale(1.03);
-	box-shadow:0 4px 12px #ffffff;
+	box-shadow:0 4px 12px var(--texto1-color);
 }
 
 .producto img
@@ -47,23 +99,20 @@ p
 	font-size:1.5rem;
 }
 
+.p2
+{
+	font-family:'monserrat';
+	text-align: right;
+}
+
 nav
 {
 	position: fixed;
 	width: 99%;
 	top: 0;
-	background-color: #594E3B;
+	background-color: var(--barra-nav);
 	z-index: 1000;
 	padding: 2px 0;
 	border-radius: 12px;
 }
 
-main
-{
-	margin-top:120px;
-}
-
-body
-{
-	background:#000000;
-}
