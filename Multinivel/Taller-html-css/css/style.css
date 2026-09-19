@@ -3,7 +3,8 @@
 	--fondo: #ffffff; 
 	--barra-nav: #F2C26F; 
 	--texto1-color: #000000; 
-	--texto2-color: #ffa418; 
+	--texto2-color: #ffa418;
+	--fondo2-color:#8c8984; 
 }
 
 @media(prefers-color-scheme: dark)
@@ -17,23 +18,75 @@
 	}
 }
 
+
+nav
+{
+	display: flex;
+	justify-content:center;
+	position: fixed;
+	align-items:center;
+	width: 99%;
+	top: 0;
+	background-color: var(--barra-nav);
+	z-index: 1000;
+	padding: 2px 0;
+	border-radius: 12px;
+}
+
+#nav a
+{
+	text-decoration:none;
+	
+	gap: 200px;
+}
+
+
 body
 {
 	background-color: var(--fondo);
 }
 
-.inicio
-{
-	background: url('img/fondoInicio.jpeg');
-	background-size:cover;
-	background-position: center;
-	background-repeat: no-repeat;
-}
 
 main
 {
 	margin-top:120px;
 }
+
+/*###############################   INICIO   #################################*/
+
+#inicio
+{
+	top:0;
+	position:relative;
+	background: url('../img/fondoInicio.jpg');
+	background-size:cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height:500px;
+}
+
+#inicio::before
+{
+	content:"";
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color: #00000080;
+}
+
+#inicio h1
+{
+	position:relative;
+}
+
+#inicio p
+{
+	position:relative;
+}
+
+/*###############################  PRODUCTOS  ##################################*/
 
 .grid-productos
 {
@@ -42,6 +95,7 @@ main
 	gap:20px;
 	padding:20px;
 }
+
 
 @media (min-width:768px) 
 {
@@ -58,6 +112,8 @@ main
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
+
+
 
 .producto
 {
@@ -85,38 +141,110 @@ main
 	border-radius: 4px;
 }
 
+/*########################   NOSOTROS  ################################*/
+
+#nosotros
+{
+	padding:20px 40px;
+	background-color:var(--fondo2-color);
+}
+
+/*###############################  CONTACTANOS  ######################################*/
+
+.formulario
+{
+	font-size:2rem;
+	text-decoration: none;
+	display: flex;
+	text-align: center;
+	border-radius: 8px;
+	border: 1px solid var(--texto2-color);
+	background-color:var(--texto2-color);
+	width:20%;
+	justify-content:center;
+	position: right;
+	gap: 20px;
+	bottom: 200px;
+}
+
+input
+{
+	background-color: var(--barra-nav);
+	border-radius: 8px;
+	border:1px solid var(--fondo);
+	font-family:"monserrat";
+	font-size: 2rem;
+	color:var(--texto1-color);
+}
+
+label
+{
+	color:var(--texto1-color);
+	font-family:'monserrat';
+}
+
+button
+{
+	background-color: var(--barra-nav);
+	border-radius: 8px;
+	border:1px solid var(--fondo);
+	font-family:"monserrat";
+	font-size: 2rem;
+	color:var(--texto1-color);
+}
+
+textarea
+{
+	background-color: var(--barra-nav);
+	border-radius: 8px;
+	border:1px solid var(--fondo);
+	font-family:"monserrat";
+	font-size: 2rem;
+	color:var(--texto1-color);
+}
+
+/*###############################  FOOTER  #########################################*/
+
+footer
+{
+	display: sticky;
+	position: center;
+	gap: 200px;
+	width: 100%;
+	background-color: var(--barra-nav);
+	z-index: 1000;
+	padding: 15px 0;
+}
+
+/*#############################  OTROS ELEMENTOS  #####################################*/
+
 h1
 {
 	font-family: 'montserrat';
 	font-size: 3rem;
-	color: #ffa418;
+	color: var(--texto2-color);
 	text-align: center;
+}
+
+h2
+{
+	font-family: 'montserrat';
+	font-size: 2rem;
+	color: var(--texto2-color);
+	text-align: left;
 }
 
 p
 {
-	color: #ffffff;
+	color: var(--texto1-color);
 	font-size:1.5rem;
 }
 
 .p2
 {
+	color:var(--texto1-color);
 	font-family:'monserrat';
-	text-align: right;
-}
-
-nav
-{
-	display: flex;
-	justify-content:center;
-	position: fixed;
-	gap: 200px;
-	align-items:center;
-	width: 99%;
-	top: 0;
-	background-color: var(--barra-nav);
-	z-index: 1000;
-	padding: 2px 0;
-	border-radius: 12px;
+	text-align: center;
+	padding:2px 200px;
 }
 

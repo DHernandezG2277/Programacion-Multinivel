@@ -27,9 +27,9 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=1
-FILE_NAME_0=207;HTML;0;EUTF-8;1;1;0;%2Fhome%2Fdraxx%2FDocuments%2FMultinivel%2FTaller-html-css%2Findex.html;0;4
-FILE_NAME_1=1406;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fdraxx%2FDocuments%2FMultinivel%2FTaller-html-css%2Fcss%2Fstyle.css;0;4
+current_page=0
+FILE_NAME_0=937;HTML;0;EUTF-8;1;1;0;%2Fhome%2Fdraxx%2FDocuments%2FMultinivel%2FTaller-html-css%2Findex.html;0;4
+FILE_NAME_1=3609;CSS;0;EUTF-8;1;1;0;%2Fhome%2Fdraxx%2FDocuments%2FMultinivel%2FTaller-html-css%2Fcss%2Fstyle.css;0;4
 FILE_NAME_2=0;Markdown;0;EUTF-8;1;1;0;%2Fhome%2Fdraxx%2FDocuments%2FMultinivel%2FTaller-html-css%2FREADME.md;0;4
 
 [VTE]
