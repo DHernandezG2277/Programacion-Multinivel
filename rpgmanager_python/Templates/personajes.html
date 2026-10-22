@@ -14,6 +14,11 @@
         <td>{{ p.nivel }}</td>
     </tr>
     {% endfor %}
+    {% if mensaje %}
+    <div class="alert alert-danger" style="background-color: #ffdddd; color: #d8000c; padding: 10px; margin-bottom: 15px;">
+        <strong>¡Atención!</strong> {{ mensaje }}
+    </div>
+{% endif %}
 </table>
 
 <form action="/personajes" method="POST">
