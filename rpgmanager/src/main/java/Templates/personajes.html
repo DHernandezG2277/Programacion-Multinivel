@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <body>
+    <h1>Lista de Personajes</h1>
+    
+              <table border='1'><tr><th>Nombre</th><th>Clase</th><th>Nivel</th><th>Vida</th></tr>
+               {% for p in personajes %}
+                   <tr>
+                   <td>{{p.getNombre()}}</td>
+                   <td>{{p.getClase()}}</td>
+                   <td>{{p.getNivel()}}</td>
+                   <td>{{p.getVida()}}</td>
+                   </tr>
+               {% endfor %}
+               </table>
+    
+                <form action= '/personajes' method='POST'>";
+                  <label>Nombre:</label>
+                  <input type='text' name='nombre'>
+                  <label>Clase:</label>
+                  <input type='text' name='clase'>
+                  <label>Nivel:</label>
+                  <input type='text' name='nivel'>
+                  <label>Vida:</label>
+                  <input type='text' name='vida'>
+                   <button type='submit'>Guardar Personaje</button>
+                </form>
+    </body>
+</html>
