@@ -23,8 +23,14 @@ db = db.getSiblingDB("rpg_manager");
 (function () {
   // 1. Precisión del Arquero: de fracción (0.72) a entero de 0 a 100 (72)
   // >>> SALA B.4 · Preparar la persistencia
-  // Arma este bloque en el Edificio de la Persistencia (pestaña MongoDB · JS),
-  // pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+      const arqueros = db.personajes.find({ precision: { $lt: 1 } }).toArray();
+      arqueros.forEach(doc => {
+        db.personajes.updateOne(
+          { _id: doc._id },
+          { $set: { precision: Math.round(doc.precision * 100) } }
+        );
+      });
+
   // <<< FIN SALA B.4
   print("Arqueros ajustados: " + arqueros.length);
 
