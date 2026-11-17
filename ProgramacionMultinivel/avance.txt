@@ -1,1 +1,17 @@
 Código: EP2.eyJ2IjoyLCJ3IjoiRGFuaWVsIEhlcm5hbmRleiAyMDI1MTU3ODAwNSIsImciOiIiLCJzIjoiIiwiZSI6IiIsInAiOiIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIn0.8-m47VQ3DbbOh2Fo
+
+B.1 ¿Por qué en MariaDB necesitas el JOIN clase para saber que Elara es Mago, y en MongoDB no?
+  R:Porque en MariaDB la información se encuentra dividida en varias tablas, por otra parte en MongoDB todo se encuentra en el mismo archivo
+
+B.2 Si cambia el precio de la Poción de vida, ¿en cuántos lugares lo cambias en MariaDB y en cuántos en MongoDB? ¿Qué ventaja y qué riesgo tiene cada modelo?
+  R: En MariaDB con solo actualizar la columna de la Tupla cambia todo debido a las llaves foráneas, sin embargo en MongoDB toca cambiar este valor en todos los lugares que se encuentre
+
+B.3 La misma operación del contrato, eliminar(1), falla en MariaDB y funciona en MongoDB. ¿Cuál comportamiento te parece mejor para el juego y por qué?
+  R: En MariaDB especifica mas de lo que debía por eso falla, y en mongo lo hace directamente, solo que dejan algunos datos sueltos. Prefiero MariaDB para el juego
+
+B.4 ¿Por qué en MariaDB hubo que hacer ALTER TABLE para guardar el mana, mientras que en MongoDB los Magos ya lo tenían?
+  R: Porque en MongoDB tocaba reemplazar un valor ya existente, en cambio en MariaDB tocaba confirmar que existiera la columna antes de agregar nada
+
+1.1 ¿Por qué el id del personaje empieza en null / None y quién se lo asigna?
+  R: Al modelo no le interesa determinar el id, de eso se encarga la base de datos.
+
