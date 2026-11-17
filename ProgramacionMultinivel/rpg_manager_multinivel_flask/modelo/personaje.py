@@ -16,8 +16,14 @@ class Personaje:
     clase = "Personaje"
 
     # >>> SALA 1.1 · Personaje: la clase base
-    # Arma este bloque en el Edificio de la Persistencia (pestaña Python),
-    # pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+        def __init__(self, nombre, nivel=1, vida=100, ataque=10, oro=Decimal("0"), id=None):
+            self.id = id
+            self.nombre = nombre
+            self.nivel = nivel
+            self.vida = vida
+            self.ataque = ataque
+            self.oro = Decimal(str(oro))
+
     # <<< FIN SALA 1.1
 
     def a_dict(self):
