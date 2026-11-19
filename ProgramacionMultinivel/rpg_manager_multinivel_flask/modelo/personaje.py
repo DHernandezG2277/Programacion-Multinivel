@@ -50,8 +50,16 @@ class Mago(Personaje):
     clase = "Mago"
 
     # >>> SALA 1.2 · Mago y Arquero: herencia
-    # Arma este bloque en el Edificio de la Persistencia (pestaña Python),
-    # pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+       def __init__(self, nombre, nivel=1, vida=100, ataque=10, oro=Decimal("0"), id=None,
+                 mana=MANA_POR_DEFECTO):
+        super().__init__(nombre, nivel, vida, ataque, oro, id)
+        self.mana = mana
+
+        def a_dict(self):
+            datos = super().a_dict()
+            datos["mana"] = self.mana
+            return datos
+
     # <<< FIN SALA 1.2
 
 
@@ -77,14 +85,29 @@ def crear_personaje(clase, nombre, nivel=1, vida=100, ataque=10, oro=Decimal("0"
     o un formulario dicen "Mago", y aquí se decide qué objeto crear.
     """
     # >>> SALA 1.3 · La fábrica de personajes
-    # Arma este bloque en el Edificio de la Persistencia (pestaña Python),
-    # pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+    if clase == "Guerrero":
+        return Guerrero(nombre, nivel, vida, ataque, oro, id)
+    if clase == "Mago":
+        return Mago(nombre, nivel, vida, ataque, oro, id,
+                    mana if mana is not None else MANA_POR_DEFECTO)
+    if clase == "Arquero":
+        return Arquero(nombre, nivel, vida, ataque, oro, id,
+                       precision if precision is not None else PRECISION_POR_DEFECTO)
+    raise ValueError(f"Clase desconocida: {clase}")
+
     # <<< FIN SALA 1.3
 
 
 # >>> SALA 1.4 · Item: el ítem del inventario
-# Arma este bloque en el Edificio de la Persistencia (pestaña Python),
-# pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+class Item:
+    """Un ítem dentro del inventario de un personaje."""
+
+    def __init__(self, nombre, tipo, valor, cantidad=1):
+        self.nombre = nombre
+        self.tipo = tipo
+        self.valor = valor
+        self.cantidad = cantidad
+
 # <<< FIN SALA 1.4
 
     def a_dict(self):
