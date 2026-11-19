@@ -1,4 +1,4 @@
-Código: EP2.eyJ2IjoyLCJ3IjoiRGFuaWVsIEhlcm5hbmRleiAyMDI1MTU3ODAwNSIsImciOiIiLCJzIjoiIiwiZSI6IiIsInAiOiIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwIn0.8-m47VQ3DbbOh2Fo
+Código: EP2.eyJ2IjoyLCJ3IjoiRGFuaWVsIEhlcm5hbmRleiAyMDI1MTU3ODAwNSIsImciOiIiLCJzIjoiMjAyNi0xMS0xOVQxNzozNjo0OC43NDlaIiwiZSI6IiIsInAiOiIzMzMzMzAwMDAwMDAwMDAwMDAwMDAwMDAwIn0.Utslqq8CDvD4ZDg6
 
 B.1 ¿Por qué en MariaDB necesitas el JOIN clase para saber que Elara es Mago, y en MongoDB no?
   R:Porque en MariaDB la información se encuentra dividida en varias tablas, por otra parte en MongoDB todo se encuentra en el mismo archivo
