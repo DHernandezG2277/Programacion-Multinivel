@@ -1,4 +1,4 @@
-Código: EP2.eyJ2IjoyLCJ3IjoiRGFuaWVsIEhlcm5hbmRleiAyMDI1MTU3ODAwNSIsImciOiIiLCJzIjoiMjAyNi0xMS0xOVQxNzozNjo0OC43NDlaIiwiZSI6IiIsInAiOiIzMzMzMzAwMDAwMDAwMDAwMDAwMDAwMDAwIn0.Utslqq8CDvD4ZDg6
+Código: EP2.eyJ2IjoyLCJ3IjoiRGFuaWVsIEhlcm5hbmRleiAyMDI1MTU3ODAwNSIsImciOiIiLCJzIjoiMjAyNi0xMS0xOVQxNzozNjo0OC43NDlaIiwiZSI6IiIsInAiOiIzMzMzMzMzMzMzMzMwMDAwMDAwMDAwMDAwIn0.qvlzWDgDMougcmLf
 
 B.1 ¿Por qué en MariaDB necesitas el JOIN clase para saber que Elara es Mago, y en MongoDB no?
   R:Porque en MariaDB la información se encuentra dividida en varias tablas, por otra parte en MongoDB todo se encuentra en el mismo archivo
@@ -15,3 +15,23 @@ B.4 ¿Por qué en MariaDB hubo que hacer ALTER TABLE para guardar el mana, mient
 1.1 ¿Por qué el id del personaje empieza en null / None y quién se lo asigna?
   R: Al modelo no le interesa determinar el id, de eso se encarga la base de datos.
 
+1.2: ¿Qué pasaría si en el constructor de Mago asignas this.mana antes de llamar a super(...)?
+  R: Directamente daría error porque no esta inicializados los valores, entonces this.mana no tiene lugar asignado en memoria para guardarse
+
+1.3: ¿Por qué conviene que los tres repositorios usen la misma fábrica en vez de que cada uno haga su propio if con las clases?
+  R: porque facilita el crecimiento y actualización de personajes, esto debido a que sino, tendría que crear un if por clase y serian mas archivos dificultando su mejora y optimización
+
+1.4: ¿Qué ventaja tiene que Item sea inmutable en Java? ¿Qué obliga a hacer en el repositorio en memoria?
+  R: Evita la propagación de errores respecto a los atributos o elementos que afecten al item, como por ejemplo el incremento de la cantidad de este. Obliga a cambiar los valores por un objeto nuevo.
+
+2.1: ¿Por qué buscarPorId devuelve null / None en vez de lanzar un error cuando el id no existe? ¿Quién decide que eso es un error?
+  R: La base de datos es la que determina si es un valor obligatorio o no, por ende el modelo solo muestra un resultado NULL 
+
+2.2: El repositorio en memoria revisa que no haya dos personajes con el mismo nombre. ¿A qué regla de MariaDB imita, y por qué tiene que hacerlo a mano?
+  R: Supongo que imita al WHERE de MariaDB, para confirmar de que errores se generan cuando sucede.
+
+2.3: ¿Qué pasaría si no cerraras la conexión después de cada consulta? ¿Qué parte del código se encarga de cerrarla?
+  R: Se estaría cargando la base de datos indeterminadamente causando afectaciones directas a la información guardada, el destructor(?)
+
+2.4: ¿Por qué los valores van como ? o %s y nunca pegados al texto del SQL? Da un ejemplo de nombre que rompería la consulta.
+  R:
