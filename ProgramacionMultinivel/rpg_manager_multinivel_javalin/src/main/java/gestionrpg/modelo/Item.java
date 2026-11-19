@@ -2,8 +2,19 @@ package gestionrpg.modelo;
 
 /** Un ítem dentro del inventario de un personaje. */
 // >>> SALA 1.4 · Item: el ítem del inventario
-// Arma este bloque en el Edificio de la Persistencia (pestaña Java),
-// pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+public class Item {
+
+    private final String nombre;
+    private final String tipo;
+    private final int valor;
+    private final int cantidad;
+
+    public Item(String nombre, String tipo, int valor, int cantidad) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.valor = valor;
+        this.cantidad = cantidad;
+
 // <<< FIN SALA 1.4
     }
 
