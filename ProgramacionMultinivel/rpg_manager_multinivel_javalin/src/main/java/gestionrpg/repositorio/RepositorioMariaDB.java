@@ -171,8 +171,17 @@ public class RepositorioMariaDB implements PersonajeRepository {
     @Override
     public boolean eliminar(int id) {
         // >>> SALA 2.5 · MariaDB: eliminar y el error 1451
-        // Arma este bloque en el Edificio de la Persistencia (pestaña Java),
-        // pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+        try (Connection con = conectar();
+             PreparedStatement ps = con.prepareStatement("DELETE FROM personaje WHERE id_personaje = ?")) {
+            ps.setInt(1, id);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            if (e.getErrorCode() == ERROR_FK_EN_USO) {
+                // inventario y personaje_mision se borran en cascada, combate no
+                throw new DatoEnUsoException(id, e);
+            }
+            throw new AccesoDatosException("Error eliminando personaje", e);
+
         // <<< FIN SALA 2.5
         }
     }
