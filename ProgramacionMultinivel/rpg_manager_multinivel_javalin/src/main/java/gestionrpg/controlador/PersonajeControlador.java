@@ -120,8 +120,16 @@ public class PersonajeControlador {
             }
         }
         // >>> SALA 4.2 · La ruta POST crear
-        // Arma este bloque en el Edificio de la Persistencia (pestaña Java),
-        // pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+        try {
+            service.crear(datos.get("nombre"), datos.get("clase"),
+                    entero(datos.get("nivel"), "nivel", 1), entero(datos.get("vida"), "vida", 100),
+                    entero(datos.get("ataque"), "ataque", 10), dinero(datos.get("oro")));
+        } catch (ValidacionException e) {
+            ctx.status(400).html(PersonajeVista.formulario(datos, e.getMessage(), motor));
+            return;
+        }
+        ctx.redirect("/personajes");
+
         // <<< FIN SALA 4.2
     }
 
@@ -134,8 +142,15 @@ public class PersonajeControlador {
 
     private void agregarItem(Context ctx) {
         // >>> SALA 4.3 · Las rutas del inventario
-        // Arma este bloque en el Edificio de la Persistencia (pestaña Java),
-        // pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+        int id = idDe(ctx);
+        try {
+            service.agregarItem(id, ctx.formParam("item"), entero(ctx.formParam("cantidad"), "cantidad", 1));
+        } catch (ValidacionException e) {
+            ctx.redirect("/personajes/" + id + "?error=" + codificar(e.getMessage()));
+            return;
+        }
+        ctx.redirect("/personajes/" + id);
+
         // <<< FIN SALA 4.3
     }
 
