@@ -41,8 +41,15 @@ public class Main {
 
     public static void main(String[] args) {
         // >>> SALA 4.1 · El arranque arma la cadena
-        // Arma este bloque en el Edificio de la Persistencia (pestaña Java),
-        // pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+        Properties cfg = cargarConfiguracion();
+        PersonajeRepository repositorio = RepositoryFactory.crear(cfg);     // aquí se elige el motor
+        PersonajeService service = new PersonajeService(repositorio);       // inyección por constructor
+        PersonajeControlador controlador = new PersonajeControlador(service, cfg.getProperty("repositorio"));
+
+        Javalin app = Javalin.create();
+        controlador.registrarRutas(app);
+        app.start(7070);
+
         // <<< FIN SALA 4.1
         System.out.println("RPG Manager en http://localhost:7070/personajes · repositorio: "
                 + cfg.getProperty("repositorio"));
