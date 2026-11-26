@@ -24,8 +24,17 @@ public final class PersonajeVista {
 
     private static String escapar(Object valor) {
         // >>> SALA 4.4 · La vista con Bootstrap
-        // Arma este bloque en el Edificio de la Persistencia (pestaña Java),
-        // pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+        if (valor == null) {
+            return "";
+        }
+        // El & va primero: los demás reemplazos crean textos que empiezan por &
+        return valor.toString()
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;")
+                .replace("'", "&#39;");
+
         // <<< FIN SALA 4.4
     }
 
