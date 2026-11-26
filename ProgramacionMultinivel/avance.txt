@@ -1,4 +1,4 @@
-Código: EP2.eyJ2IjoyLCJ3IjoiRGFuaWVsIEhlcm5hbmRleiAyMDI1MTU3ODAwNSIsImciOiIiLCJzIjoiMjAyNi0xMS0xOVQxNzozNjo0OC43NDlaIiwiZSI6IiIsInAiOiIzMzMzMzMzMzMzMzMwMDAwMDAwMDAwMDAwIn0.qvlzWDgDMougcmLf
+Código: EP2.eyJ2IjoyLCJ3IjoiRGFuaWVsIEhlcm5hbmRleiAyMDI1MTU3ODAwNSIsImciOiIiLCJzIjoiMjAyNi0xMS0xOVQxNzozNjo0OC43NDlaIiwiZSI6IiIsInAiOiIzMzMzMzMzMzMzMzMzMDAwMDAwMDAwMDAwIn0.YyOpAJ4je7fwVkwU
 
 B.1 ¿Por qué en MariaDB necesitas el JOIN clase para saber que Elara es Mago, y en MongoDB no?
   R:Porque en MariaDB la información se encuentra dividida en varias tablas, por otra parte en MongoDB todo se encuentra en el mismo archivo
@@ -35,3 +35,7 @@ B.4 ¿Por qué en MariaDB hubo que hacer ALTER TABLE para guardar el mana, mient
 
 2.4: ¿Por qué los valores van como ? o %s y nunca pegados al texto del SQL? Da un ejemplo de nombre que rompería la consulta.
   R:
+
+2.5: ¿Por qué el repositorio lanza DatoEnUsoException en vez de mostrar directamente "No se puede eliminar: tiene combates"?
+  R: 
+
