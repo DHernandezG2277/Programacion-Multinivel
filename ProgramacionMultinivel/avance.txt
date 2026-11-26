@@ -1,4 +1,4 @@
-Código: EP2.eyJ2IjoyLCJ3IjoiRGFuaWVsIEhlcm5hbmRleiAyMDI1MTU3ODAwNSIsImciOiIiLCJzIjoiMjAyNi0xMS0xOVQxNzozNjo0OC43NDlaIiwiZSI6IiIsInAiOiIzMzMzMzMzMzMzMzMzMDAwMDAwMDAwMDAwIn0.YyOpAJ4je7fwVkwU
+Código: EP2.eyJ2IjoyLCJ3IjoiRGFuaWVsIEhlcm5hbmRleiAyMDI1MTU3ODAwNSIsImciOiIiLCJzIjoiMjAyNi0xMS0xOVQxNzozNjo0OC43NDlaIiwiZSI6IjIwMjYtMTEtMjZUMTY6Mzk6MzguNTA4WiIsInAiOiIzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzIn0.Qn75Flivryrcbmlh
 
 B.1 ¿Por qué en MariaDB necesitas el JOIN clase para saber que Elara es Mago, y en MongoDB no?
   R:Porque en MariaDB la información se encuentra dividida en varias tablas, por otra parte en MongoDB todo se encuentra en el mismo archivo
@@ -10,7 +10,7 @@ B.3 La misma operación del contrato, eliminar(1), falla en MariaDB y funciona e
   R: En MariaDB especifica mas de lo que debía por eso falla, y en mongo lo hace directamente, solo que dejan algunos datos sueltos. Prefiero MariaDB para el juego
 
 B.4 ¿Por qué en MariaDB hubo que hacer ALTER TABLE para guardar el mana, mientras que en MongoDB los Magos ya lo tenían?
-  R: Porque en MongoDB tocaba reemplazar un valor ya existente, en cambio en MariaDB tocaba confirmar que existiera la columna antes de agregar nada
+  R: Porque en MongoDB tocaba reemplazar un valor ya existente, en cambio en MariaDB tocaba confirmar que existiera la columna antes de reemplazar nada
 
 1.1 ¿Por qué el id del personaje empieza en null / None y quién se lo asigna?
   R: Al modelo no le interesa determinar el id, de eso se encarga la base de datos.
@@ -28,14 +28,51 @@ B.4 ¿Por qué en MariaDB hubo que hacer ALTER TABLE para guardar el mana, mient
   R: La base de datos es la que determina si es un valor obligatorio o no, por ende el modelo solo muestra un resultado NULL 
 
 2.2: El repositorio en memoria revisa que no haya dos personajes con el mismo nombre. ¿A qué regla de MariaDB imita, y por qué tiene que hacerlo a mano?
-  R: Supongo que imita al WHERE de MariaDB, para confirmar de que errores se generan cuando sucede.
+  R: Supongo que imita al Unique de MariaDB, para confirmar de que errores se generan cuando sucede.
 
 2.3: ¿Qué pasaría si no cerraras la conexión después de cada consulta? ¿Qué parte del código se encarga de cerrarla?
-  R: Se estaría cargando la base de datos indeterminadamente causando afectaciones directas a la información guardada, el destructor(?)
+  R: Seguiría consumiendo recursos haciendo prácticamente imposible realizar más consultas, el finally se encarga  de dar el cierre a la consulta
 
 2.4: ¿Por qué los valores van como ? o %s y nunca pegados al texto del SQL? Da un ejemplo de nombre que rompería la consulta.
-  R:
+  R:Porque si construimos una consulta poniendo directamente el nombre, las comillas pueden hacer que la consulta falle. como por ejemplo TABLE one
 
 2.5: ¿Por qué el repositorio lanza DatoEnUsoException en vez de mostrar directamente "No se puede eliminar: tiene combates"?
+  R: Porque el repositorio no se comunica directamente con el usuario la capa que se encarga de eso es el service
+
+2.6: ¿Por qué el siguiente id se pide con $inc en una sola operación y no leyendo el último id y sumándole 1?
+  R: porque pueden haber casos en los que al realizar dos consultas o inscripciones al mismo tiempo falle al momento de indicarle su numero, el $inc se encarga de que se tome un valor a la vez en vez de mirar simplemente el ultimo creado
+
+2.7: El archivo real de configuración va en .gitignore y al repositorio solo se sube el config.example. ¿Por qué?
+  R: porque podria subirse o mostrarse informacion privada si es el caso en el config original, por eso se sube una version con las bases mas no directamente con los datos reales usados
+
+2.8: Compara cómo cada motor resuelve "sumar si ya existe": ¿qué hace MariaDB con ON DUPLICATE KEY UPDATE y qué hace MongoDB con $inc y $push?
+  R:
+MariaDB: Actualiza una fila si al hacer el INSERT se provoca un problema por la PRIMARY KEY
+MongoDB: $inc solo incrementa el valor dependiendo la consulta, y $push añade un elemento a un ARRAY
+
+3.1: ¿Por qué el atributo del Service es de tipo PersonajeRepository y no RepositorioMariaDB?
+  R: Porque sino limitarias el uso y operaciones de la app a solo la base de datos de MariaDB
+
+3.2: inventario(id) llama primero a obtener(id) aunque no use el personaje. ¿Para qué?
+  R: Para saber si realmente eciste ese personaje y asi evitar realizar acciones que botarian error
+
+3.3: MariaDB ya tiene un CHECK (vida >= 0). ¿Por qué el Service sigue validando que la vida no sea negativa?
+  R: Es como una medida de seguridad para evitar errores, dejarle todo el trabajo a la base de datos puede provocar que muchas consultas fallen
+
+3.4: ¿Por qué el Service revisa que el ítem exista en el catálogo si el repositorio también devuelve false cuando no existe?
+  R: De igual forma como el punto anterior es mucho mas facil y evita errores realizar la comprobacion desde el SERVICE incluso si esta ya está en el repositorio
+
+**4.1: Si el puerto 7070 ya está ocupado, la app no arranca. ¿Qué capa falla y por qué no tiene nada que ver con la base de datos?
   R: 
 
+4.2: ¿Por qué después de crear se hace un redirect a la lista en vez de mostrar la lista directamente?
+  R: Para evitar "Duplicados" en los personajes, al poner todas las consultas en un solo llamado al actualizar la pagina puede causar que se cree de nuevo el mismo personaje
+
+**4.3: ¿Por qué el error viaja en la URL (?error=...) en vez de guardarse en una variable del controlador?
+  R:  
+
+4.4: En escapar(), ¿por qué el & tiene que reemplazarse primero?
+  R: Porque dependiendo de que estas haciendo el no reemplazar primero el & puede hacer de que algunas entidades terminen siendo modificadas
+
+A.1: Corre el recorrido con memoria, con mariadb y con mongo. ¿Qué cambia en la salida y qué no cambia en el código?
+  R: En la salida nada debido a que se usa una interfaz general para exactamente evitar errores entre las bases de datos, el SERVICE solo utiliza "base de datos" mas no esta solicitando que sea una especifica, esto permite que el codigo tenga menos errores y sea mas facil de mejorar
