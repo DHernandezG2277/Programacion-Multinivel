@@ -54,8 +54,24 @@ public class RecorridoPersistencia {
         }
 
         // >>> SALA A.1 · Recorrido completo: Kaelen
-        // Arma este bloque en el Edificio de la Persistencia (pestaña Java),
-        // pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+        Personaje nuevo;
+        try {
+            nuevo = service.crear(NOMBRE_PRUEBA, "Arquero", 3, 90, 18, new BigDecimal("12.50"));
+        } catch (ValidacionException e) {
+            System.out.println("\n4. No se pudo crear: " + e.getMessage());
+            return;
+        }
+        System.out.println("\n4. Creado: " + nuevo.getNombre() + " con id " + nuevo.getId());
+
+        service.actualizarVida(nuevo.getId(), 55);
+        System.out.println("5. Vida de " + nuevo.getNombre() + " actualizada a "
+                + service.obtener(nuevo.getId()).getVida());
+
+        service.eliminar(nuevo.getId());
+        System.out.println("6. " + NOMBRE_PRUEBA + " eliminado");
+
+        imprimirLista("7. Todos los personajes otra vez", service.listar());
+
         // <<< FIN SALA A.1
 
         System.out.println("\n8. Validaciones del Service");
