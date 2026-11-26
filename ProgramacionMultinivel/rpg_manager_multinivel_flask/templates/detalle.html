@@ -32,7 +32,21 @@
         </thead>
         <tbody>
           {# >>> SALA 4.4 · La vista con Bootstrap #}
-          {# Arma este bloque en el Edificio de la Persistencia (pestaña Python · Jinja2), #}
+          {% for item in inventario %}
+            <tr>
+              <td>{{ item.nombre }}</td><td>{{ item.tipo }}</td>
+              <td class="text-end">{{ item.valor }}</td><td class="text-end">{{ item.cantidad }}</td>
+              <td class="text-end">
+                <form method="post" action="{{ url_for('personajes.quitar_item', id=p.id) }}">
+                  <input type="hidden" name="item" value="{{ item.nombre }}">
+                  <button class="btn btn-sm btn-outline-danger" type="submit">Quitar</button>
+                </form>
+              </td>
+            </tr>
+          {% else %}
+            <tr><td colspan="5" class="text-center text-muted py-3">Inventario vacío.</td></tr>
+          {% endfor %}
+
           {# pulsa «Copiar bloque» y pégalo entre estas dos marcas. #}
           {# <<< FIN SALA 4.4 #}
         </tbody>
