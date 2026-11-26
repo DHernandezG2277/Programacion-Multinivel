@@ -29,8 +29,15 @@ def leer_configuracion(ruta=None):
 
 def crear_app(cfg=None, repositorio=None):
     # >>> SALA 4.1 · El arranque arma la cadena
-    # Arma este bloque en el Edificio de la Persistencia (pestaña Python),
-    # pulsa «Copiar bloque» y pégalo entre estas dos marcas.
+    cfg = cfg or leer_configuracion()
+    repositorio = repositorio or crear_repositorio(cfg)   # aquí se elige el motor
+    service = PersonajeService(repositorio)                # inyección por constructor
+
+    app = Flask(__name__)
+    app.json.ensure_ascii = False
+    app.register_blueprint(crear_controlador(service, cfg.get("app", "repositorio")))
+    return app
+
     # <<< FIN SALA 4.1
 
 
