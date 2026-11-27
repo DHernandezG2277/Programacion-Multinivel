@@ -1,0 +1,58 @@
+inicio desde CMD mysqul -u root -p
+
+
+
+
+### Inventario;
++---------------+---------+------+-----+---------+-------+
+| Field         | Type    | Null | Key | Default | Extra |
++---------------+---------+------+-----+---------+-------+
+| id_personaje  | int(11) | NO   | PRI | NULL    |       |
+| id_item       | int(11) | NO   | PRI | NULL    |       |
+| cantidad_item | int(11) | NO   |     | NULL    |       |
++---------------+---------+------+-----+---------+-------+
+
++--------------+---------+---------------+
+| id_personaje | id_item | cantidad_item |
++--------------+---------+---------------+
+|            4 |       1 |             2 |
++--------------+---------+---------------+
+
+
+
+### Item;
++---------+---------------------------------------------+------+-----+---------+----------------+
+| Field   | Type                                        | Null | Key | Default | Extra          |
++---------+---------------------------------------------+------+-----+---------+----------------+
+| id_item | int(11)                                     | NO   | PRI | NULL    | auto_increment |
+| nombre  | varchar(50)                                 | YES  | UNI | NULL    |                |
+| tipo    | enum('arma','armadura','pocion','reliquia') | YES  |     | NULL    |                |
+| precio  | decimal(10,2)                               | YES  |     | NULL    |                |
+| peso    | decimal(5,2)                                | YES  |     | NULL    |                |
++---------+---------------------------------------------+------+-----+---------+----------------+
+
++---------+-------------------+----------+--------+------+
+| id_item | nombre            | tipo     | precio | peso |
++---------+-------------------+----------+--------+------+
+|       1 | Amuleto de suerte | reliquia | 200.00 | 0.50 |
++---------+-------------------+----------+--------+------+
+
+
+
+### Clase;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| id_clase    | int(11)     | NO   | PRI | NULL    |       |
+| nombre      | varchar(15) | YES  |     | NULL    |       |
+| descripcion | text        | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
++----------+----------+----------------------------------------------------+
+| id_clase | nombre   | descripcion                                        |
++----------+----------+----------------------------------------------------+
+|        1 | Guerrero | Bastante daño y defensa, pero sin agilidad         |
+|        2 | Mago     | Bastante daño magico y movilidad, pero sin defensa |
+|        3 | Tirador  | Agil y preciso, pero sin daño a mele               |
+|        4 | Picaro   | Sigiloso y ágil, pero sin defensa                  |
++----------+----------+----------------------------------------------------+
